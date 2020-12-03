@@ -1,0 +1,16 @@
+.background {
+  -fx-background-color: Black;
+}
+
+.button {
+  -fx-background-color: Black;
+  -fx-text-fill: White;
+}
+
+.button:hover {
+  -fx-text-fill: LightBlue;
+}
+
+.menu-text {
+  -fx-fill: White;
+}

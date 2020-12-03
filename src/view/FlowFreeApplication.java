@@ -1,28 +1,38 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import view.windows.GameWindowLayout;
+import view.windows.StartWindowLayout;
 
 public class FlowFreeApplication extends Application {
 
-  public static final ResourceBundle windowConfiguration = ResourceBundle.getBundle("view.resources.windowConfiguration");
+  public static final ResourceBundle WINDOW_CONFIGURATION = ResourceBundle.getBundle("view.resources.windowConfiguration");
+  public static final String STYLESHEET_FOLDER = "/stylesheets/";
 
-  public static final double WIDTH = Double.parseDouble(windowConfiguration.getString("Width"));
-  public static final double HEIGHT = Double.parseDouble(windowConfiguration.getString("Height"));
-  public static final Color BACKGROUND_COLOR = Color.valueOf(windowConfiguration.getString("BackgroundColor"));
+  public static final double WIDTH = Double.parseDouble(WINDOW_CONFIGURATION.getString("Width"));
+  public static final double HEIGHT = Double.parseDouble(WINDOW_CONFIGURATION.getString("Height"));
+  public static final String DEFAULT_THEME = WINDOW_CONFIGURATION.getString("DefaultTheme");
 
+  private Stage myStage;
+  private BorderPane myRoot;
   private Scene myScene;
-  private Group myRoot = new Group();
 
   @Override
-  public void start(Stage primaryStage) throws Exception {
+  public void start(Stage primaryStage) {
+    myStage = primaryStage;
+    myRoot = new BorderPane();
     myScene = new Scene(myRoot, WIDTH, HEIGHT);
-    myScene.setFill(BACKGROUND_COLOR);
-    primaryStage.setScene(myScene);
-    primaryStage.show();
+    myScene.getStylesheets().add(getClass().getResource(STYLESHEET_FOLDER + DEFAULT_THEME).toExternalForm());
+    StartWindowLayout startWindow = new StartWindowLayout(myStage, myScene);
+    startWindow.changeScene(startWindow);
   }
+
 }
