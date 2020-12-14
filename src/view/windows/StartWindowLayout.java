@@ -32,7 +32,7 @@ public class StartWindowLayout extends WindowLayout {
   public void initializeButtons() {
     Button startButton = new Button(START);
     startButton.getStyleClass().add("button");
-    startButton.setOnAction(e -> changeScene(new GameWindowLayout(getStage(), getScene())));
+    startButton.setOnAction(e -> changeScene(new LevelSelectWindowLayout(getStage(), getScene())));
     setBottom(startButton);
     BorderPane.setAlignment(startButton, Pos.CENTER);
   }

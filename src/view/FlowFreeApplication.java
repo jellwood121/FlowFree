@@ -1,15 +1,10 @@
 package view;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import view.windows.GameWindowLayout;
 import view.windows.StartWindowLayout;
 
 public class FlowFreeApplication extends Application {
