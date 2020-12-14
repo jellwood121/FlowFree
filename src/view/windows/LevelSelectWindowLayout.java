@@ -4,13 +4,11 @@ import java.io.File;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -23,7 +21,6 @@ public class LevelSelectWindowLayout extends WindowLayout{
   public static final ResourceBundle SELECT_WINDOW_CONFIG = ResourceBundle.getBundle("view.resources.levelSelectWindowConfig");
   public static final String LEVELS_PATH = "levels/";
   public static final double MENU_TEXT_SCALE = Double.parseDouble(SELECT_WINDOW_CONFIG.getString("MenuTextScaling"));
-  public static final double MENU_TITLE_OFFSET = Double.parseDouble(SELECT_WINDOW_CONFIG.getString("MenuTitleOffset"));
 
   public LevelSelectWindowLayout(Stage stage, Scene scene) {
     super(stage, scene);
@@ -51,6 +48,9 @@ public class LevelSelectWindowLayout extends WindowLayout{
     }
     setCenter(levelButtons);
     BorderPane.setAlignment(levelButtons, Pos.BOTTOM_CENTER);
+    Button returnButton = new Button(SELECT_WINDOW_CONFIG.getString("ReturnButton"));
+    returnButton.setOnAction(e -> changeScene(new StartWindowLayout(getStage(), getScene())));
+    setBottom(returnButton);
   }
 
   private List<File> getLevels() {
